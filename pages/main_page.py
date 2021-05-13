@@ -31,6 +31,8 @@ def init():
 @main_page.route('/predict_prices', methods=['POST','OPTIONS'])
 @logged
 def predict():
+    if request.method=='OPTIONS':
+        return make_response("",200)
     data = json.loads(request.data)
     origin = data['origin']
     dest = data['destination']
